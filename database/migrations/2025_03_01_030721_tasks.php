@@ -14,6 +14,7 @@ return new class extends Migration
     {
         Schema::create('tasks', function (Blueprint $table){
             $table->id();
+            $table->unsignedBigInteger('user_id')->after('id');
             $table->foreignIdFor(User::class,'user_id')->constrained()->cascadeOnDelete();
             $table->string('title');
             $table->text('description');
@@ -28,6 +29,7 @@ return new class extends Migration
      */
     public function down(): void
     {
+     
         Schema::dropIfExists('tasks');
     }
 };

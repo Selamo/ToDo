@@ -12,8 +12,9 @@ class TaskManager extends Controller
 
     function ListTask()
     {
-        $tasks = Tasks::where("status",NULL)->paginate(3);
-        return view("welcome", compact(var_name:'tasks'));
+        $tasks = Tasks::where('user_id', Auth::id())->paginate(10); // Fetch only the logged-in user's tasks
+
+    return view('welcome', compact('tasks'));
     }
 
    function addTask(){
@@ -74,4 +75,5 @@ public function edit($id)
 
     return redirect()->route('tasks.index')->with('error', 'Task not found!'); // Redirect if not found
 }
+
 }
