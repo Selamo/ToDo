@@ -42,16 +42,20 @@ function addTaskPost(Request $request)
     return redirect(route("tasks.add"))->with("error","Task not added");
 }
 
+
+
 public function update(Request $request, $id)
 {
     $request->validate([
         'title' => 'required|string|max:255',
+        'description' => 'required|string|max:1000', // Allow description but make it optional
     ]);
 
     $task = Tasks::find($id);
     if ($task) {
-        $task->title = $request->title; // Update the task title
-        $task->save(); // Save changes
+        $task->title = $request->title;
+        $task->description = $request->description; // Updating description
+        $task->save();
         return redirect()->back()->with('success', 'Task updated successfully!');
     }
     return redirect()->back()->with('error', 'Task not found!');

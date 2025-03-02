@@ -23,7 +23,7 @@
                 <thead>
                     <tr>
                         <th>Title</th>
-                        <th>Description</th> <!-- Added Description column -->
+                        <th>Description</th>
                         <th>Deadline</th>
                         <th>Status</th>
                         <th>Actions</th>
@@ -33,18 +33,15 @@
                     @foreach($tasks as $task)
                         <tr>
                             <td>{{ $task->title }}</td>
-                            <td>{{ $task->description }}</td> <!-- Displaying the description -->
+                            <td>{{ $task->description }}</td>
                             <td>{{ $task->deadline }}</td>
                             <td>
-                                <span class="badge {{ $task->is_completed ? 'bg-success' : 'bg-warning' }}">
+                                <button class="btn status-toggle {{ $task->is_completed ? 'btn-success' : 'btn-warning' }}">
                                     {{ $task->is_completed ? 'Completed' : 'Pending' }}
-                                </span>
+                                </button>
                             </td>
                             <td>
                                 <div class="btn-group">
-                                    <a href="{{ route('tasks.status.update', $task->id) }}" class="btn btn-success">
-                                        {{ $task->is_completed ? 'Reopen' : 'Complete' }}
-                                    </a>
                                     <a href="{{ route('tasks.edit', $task->id) }}" class="btn btn-primary">Update</a>
                                     <a href="{{ route('tasks.delete', $task->id) }}" class="btn btn-danger">Delete</a>
                                 </div>
@@ -60,4 +57,23 @@
         </div>
     </div>
 </main>
-@endsection  
+
+<!-- jQuery for Frontend Status Toggle -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    $(document).ready(function() {
+        $('.status-toggle').click(function() {
+            var button = $(this);
+            var isCompleted = button.hasClass('btn-success');
+
+            // Toggle classes and text
+            if (isCompleted) {
+                button.removeClass('btn-success').addClass('btn-warning').text('Pending');
+            } else {
+                button.removeClass('btn-warning').addClass('btn-success').text('Completed');
+            }
+        });
+    });
+</script>
+
+@endsection

@@ -20,7 +20,8 @@
             <label for="title" class="form-label">Deadline</label>
             <input type="datetime-local" name="deadline" class="form-control" id="deadline" value="{{ $task->deadline }}" required>
             <label for="title" class="form-label">Description</label>
-            <input type="text" name="deadline" class="form-control" id="deadline" value="{{ $task->description }}" required>
+            <input type="text" name="description" class="form-control" id="description" value="{{ $task->description }}" required>
+
         </div>
         <button type="submit" class="btn btn-primary">Update Task</button>
         <a href="/" class="btn btn-secondary">Back</a>

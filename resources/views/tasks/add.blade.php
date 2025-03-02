@@ -18,6 +18,9 @@
         <label>Description</label>
         <textarea name="description" class="form-control" rows="3"></textarea>
       </div>
+
+      <div class="mb-3">
+      </div>
       @if (session()->has("success"))
       <div class="alert alert-success">
           {{ session()->get("success") }}

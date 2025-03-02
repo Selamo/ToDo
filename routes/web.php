@@ -25,7 +25,7 @@ Route::get("/", [TaskManager::class,"ListTask"])->name("home")->middleware('auth
 
     Route::post("tasks/add", [TaskManager::class,"addTaskPost"])->name("tasks.add.post")->middleware('auth');
 
-    Route::get("tasks/status/{id}", [TaskManager::class,"updateTaskStatus"])->name("tasks.status.update")->middleware('auth');
+    
 
     Route::get("tasks/delete/{id}", [TaskManager::class,"deleteTask"])->name("tasks.delete")->middleware('auth');
 Route::post('/tasks/update/{id}', [TaskManager::class, 'update'])->name('tasks.update');
