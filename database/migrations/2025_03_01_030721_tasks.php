@@ -20,6 +20,7 @@ return new class extends Migration
             $table->text('description');
             $table->string('deadline');
             $table->timestamps();
+            $table->boolean('is_completed')->default(false);
         });
     }
 
@@ -30,5 +31,6 @@ return new class extends Migration
     {
 
         Schema::dropIfExists('tasks');
+        
     }
 };

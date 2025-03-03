@@ -31,7 +31,7 @@
                 </thead>
                 <tbody>
                     @foreach($tasks as $task)
-                        <tr>
+                        <tr data-task-id="{{ $task->id }}">
                             <td>{{ $task->title }}</td>
                             <td>{{ $task->description }}</td>
                             <td>{{ $task->deadline }}</td>
@@ -58,20 +58,35 @@
     </div>
 </main>
 
-<!-- jQuery for Frontend Status Toggle -->
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script>
     $(document).ready(function() {
         $('.status-toggle').click(function() {
             var button = $(this);
+            var taskId = button.closest('tr').data('task-id'); // Get task ID from data attribute
             var isCompleted = button.hasClass('btn-success');
 
-            // Toggle classes and text
-            if (isCompleted) {
-                button.removeClass('btn-success').addClass('btn-warning').text('Pending');
-            } else {
-                button.removeClass('btn-warning').addClass('btn-success').text('Completed');
-            }
+            // Make an AJAX request to update the task status
+            $.ajax({
+                url: '/tasks/' + taskId + '/toggle-status', // Adjust the URL based on your routing
+                method: 'POST',
+                data: {
+                    _token: '{{ csrf_token() }}', // Include CSRF token for security
+                    is_completed: !isCompleted // Send the new completion status
+                },
+                success: function(response) {
+                    // Toggle classes and text based on the response
+                    if (response.is_completed) {
+                        button.removeClass('btn-warning').addClass('btn-success').text('Completed');
+                    } else {
+                        button.removeClass('btn-success').addClass('btn-warning').text('Pending');
+                    }
+                },
+                error: function(xhr) {
+                    console.error('Error updating task status:', xhr);
+                    alert('Failed to update task status. Please try again.');
+                }
+            });
         });
     });
 </script>

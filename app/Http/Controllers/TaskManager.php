@@ -80,4 +80,14 @@ public function edit($id)
     return redirect()->route('tasks.index')->with('error', 'Task not found!'); // Redirect if not found
 }
 
+public function toggleStatus(Request $request, Tasks $task)
+{
+    // Toggle the status
+    $task->is_completed = !$task->is_completed;
+    $task->save();
+
+    // Return the updated status
+    return response()->json(['is_completed' => $task->is_completed]);
+}
+
 }
