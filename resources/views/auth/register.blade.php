@@ -24,8 +24,8 @@
             padding: 20px;
             border-radius: 5px;
             box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-            width: 400px; /* Set width of the container */
-            height: 400px; /* Set height of the container (adjust as needed) */
+            width: 500px; /* Set width of the container */
+            height: 500px; /* Set height of the container (adjust as needed) */
             text-align: center;
             display: flex;
             flex-direction: column; /* Aligns children vertically */
@@ -143,7 +143,10 @@
             @endif
 
             <button type="submit">Sign Up</button>
-            <a href="{{ route("login") }}" class="text-center">Already have an account?</a>
+            <div class="flex items-center mt-2">
+                <p class="mr-2">Already have an account?</p>
+                <a href="{{ route('login') }}" class="text-blue-500 hover:underline">Login here</a>
+            </div>
         </form>
     </div>
 </body>

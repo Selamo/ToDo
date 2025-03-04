@@ -33,6 +33,7 @@
       </div>
       @endif
 <button class="btn btn-success rounded-pill" type="submit">Submit</button>
+<a href="/" class="btn btn-secondary">Back</a>
 </form>
 </div>
 </div>

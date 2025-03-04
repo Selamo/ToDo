@@ -56,7 +56,7 @@ public function update(Request $request, $id)
         $task->title = $request->title;
         $task->description = $request->description; // Updating description
         $task->save();
-        return redirect()->back()->with('success', 'Task updated successfully!');
+        return redirect(route("home"))->with('success', 'Task updated successfully!');
     }
     return redirect()->back()->with('error', 'Task not found!');
 }

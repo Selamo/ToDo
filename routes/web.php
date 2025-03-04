@@ -31,7 +31,7 @@ Route::get("/", [TaskManager::class,"ListTask"])->name("home")->middleware('auth
 Route::post('/tasks/update/{id}', [TaskManager::class, 'update'])->name('tasks.update');
 
 Route::get('/tasks/edit/{id}', [TaskManager::class, 'edit'])->name('tasks.edit');
-Route::post('/tasks/update/{id}', [TaskManager::class, 'update'])->name('tasks.update');
+
 
 Route::post('/tasks/{task}/toggle-status', [TaskManager::class, 'toggleStatus'])->name('tasks.toggleStatus');
 

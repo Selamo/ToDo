@@ -23,7 +23,7 @@
             <input type="text" name="description" class="form-control" id="description" value="{{ $task->description }}" required>
 
         </div>
-        <button type="submit" class="btn btn-primary">Update Task</button>
+        <button type="submit" class="btn btn-primary" href="/">Update Task</button>
         <a href="/" class="btn btn-secondary">Back</a>
     </form>
 </div>
