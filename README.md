@@ -16,17 +16,22 @@ Students, professionals, or anyone seeking to improve their time management skil
 2. Technologies Used
 2.1 Programming Language
 PHP
+
 2.2 Framework
 Laravel (Specify version, e.g., Laravel 12)
+
 2.3 Database
 MySQL (or specify your database, e.g., SQLite for a simpler setup)
+
 2.4 Frontend
 HTML
 CSS
 Bootstrap (Specify version, e.g., Bootstrap 5) - For responsive layout and styling.
 JavaScript (likely used for interactive elements, form handling, and potentially AJAX updates)
+
 2.5 Other Libraries/Packages
 List any specific packages. Examples: laravel/ui for authentication scaffolding (if used), or a datepicker library for the due date field.
+
 3. Setup and Installation
 3.1 Prerequisites
 PHP (Specify the minimum required version, e.g., PHP 8.1 or higher)
@@ -34,6 +39,7 @@ Composer (Latest stable version)
 MySQL
 Node.js and npm (if using Laravel Mix/Vite for asset compilation)
 Web Server (Apache or Nginx)
+
 3.2 Installation Steps
 Clone the Repository
 bash
