@@ -6,8 +6,11 @@
         <div class="my-3 p-3 bg-body rounded shadow-sm">
             <div class="d-flex justify-content-between align-items-center mb-3">
                 <h3 class="border-bottom pb-2 mb-0">List of Tasks</h3>
+
                 @if(Auth::check())
-                    <span class="text-muted">Welcome, {{ Auth::user()->name }}!</span>
+                    <div class="d-flex align-items-center">
+                        <span class="text-muted">Welcome, {{ Auth::user()->name }}!</span>
+                    </div>
                 @endif
             </div>
 

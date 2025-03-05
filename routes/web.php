@@ -1,7 +1,9 @@
 <?php
 
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\TaskManager;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
 
@@ -35,3 +37,8 @@ Route::get('/tasks/edit/{id}', [TaskManager::class, 'edit'])->name('tasks.edit')
 
 Route::post('/tasks/{task}/toggle-status', [TaskManager::class, 'toggleStatus'])->name('tasks.toggleStatus');
 
+Route::post('/profile/update', [ProfileController::class, 'updateProfilePicture'])->name('profile.update')->middleware('auth'); // Corrected Route name
+
+Route::get('/profile/edit', [ProfileController::class, 'edit'])->name('Edit_Profile')->middleware('auth'); // corrected route name
+Route::get('/profile/update/picture', [ProfileController::class, 'showUpdateProfilePictureForm'])->name('profile.picture.edit');
+Route::post('/profile/update/picture', [ProfileController::class, 'updateProfilePicture'])->name('profile.picture.update');  

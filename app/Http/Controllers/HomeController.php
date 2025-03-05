@@ -21,9 +21,9 @@ class HomeController extends Controller
     }
 
     function LoginPost(Request $request) {
-        // Validate the request
+
         $request->validate([
-            "email" => "required|email", // Optional, but good to ensure the email format is valid
+            "email" => "required|email",
             "password" => "required",
         ]);
 
@@ -35,7 +35,7 @@ class HomeController extends Controller
             return redirect()->intended(route('home'));
         }
 
-        // Redirect back with an error message if authentication fails
+      
         return redirect()->back()->with("error", "Login failed");
     }
 
@@ -51,19 +51,27 @@ function logout()
 
     function registerPost(Request $request){
         $request->validate([
-            "fullname"=> "required",
-            "email"=> "required|unique:users,email",
-            "password"=> "required",
+            "fullname" => "required",
+            "email" => "required|unique:users,email",
+            "password" => [
+                'required',
+                'min:8',
+                'regex:/[a-z]/',
+                'regex:/[A-Z]/',
+                'regex:/[0-9]/',
+                'regex:/[@$!%*#?&]/',
+            ],
         ]);
-$user = new User();
-$user->name = $request->fullname;
-$user->email = $request->email;
-$user->password = Hash::make(value:$request->password);
-if($user->save()){
-    Auth::user();
-    return redirect(route(name:"home"));
-}
-return redirect()->back()->with("error", "Failed to create account");
+
+        $user = new User();
+        $user->name = $request->fullname;
+        $user->email = $request->email;
+        $user->password = Hash::make(value:$request->password);
+        if($user->save()){
+            Auth::login($user); // Use Auth::login() to log in the newly registered user
+            return redirect(route(name:"home"));
+        }
+        return redirect()->back()->with("error", "Failed to create account");
     }
 }
 
