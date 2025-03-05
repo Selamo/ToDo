@@ -1,5 +1,5 @@
-ToDoList App
-1. Project Overview
+**ToDoList App**
+**1. Project Overview**
 ToDoList is a web application designed to help users efficiently manage their daily tasks. It provides a simple and intuitive interface for creating, organizing, and tracking tasks, ensuring users stay on top of their responsibilities.
 
 1.1 Key Features
